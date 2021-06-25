@@ -1,0 +1,22 @@
+{
+    "name": "richtestani/manfox",
+    "type": "package",
+    "description": "Work with FoxyCart API easily",
+    "keywords": ["foxycart", "api", "hypermedia", "rest"],
+    "homepage": "https://github.com/richtestani/ManFox",
+    "license": "unlicense",
+    "version":"0.1.0",
+     "authors": [
+        {
+            "name": "Richard Testani",
+            "email": "richtestani@mac.com",
+            "homepage": "http://richtestani.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "RichTestani\\ManFox\\": "src/"
+        }
+    }
+}
