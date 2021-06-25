@@ -5,7 +5,6 @@
     "keywords": ["foxycart", "api", "hypermedia", "rest"],
     "homepage": "https://github.com/richtestani/ManFox",
     "license": "unlicense",
-    "version":"0.1.0",
      "authors": [
         {
             "name": "Richard Testani",
