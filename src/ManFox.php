@@ -2,16 +2,16 @@
 
 namespace RichTestani\ManFox;
 
-use RichTestani\ManFox\Auth\OAuth;
-use RichTestani\ManFox\Nodes;
-use RichTestani\ManFox\Api;
-use GuzzleHttp\Client;
-use RichTestani\ManFox\Auth\CreateClient;
-use RichTestani\ManFox\ManFoxCache;
-use RichTestani\ManFox\Tokens\AccessToken;
-use RichTestani\ManFox\Drivers\{
-  Sessions
-};
+// use RichTestani\ManFox\Auth\OAuth;
+// use RichTestani\ManFox\Nodes;
+// use RichTestani\ManFox\Api;
+// use GuzzleHttp\Client;
+// use RichTestani\ManFox\Auth\CreateClient;
+// use RichTestani\ManFox\ManFoxCache;
+// use RichTestani\ManFox\Tokens\AccessToken;
+// use RichTestani\ManFox\Drivers\{
+//   Sessions
+// };
 
 /*
 The initializing file to work with this package.
@@ -48,37 +48,39 @@ class ManFox {
 
     $this->api = new Api();
 
-    $this->config = require_once(__DIR__.'/configuration.php');
+    print_r($credentials);
 
-    $this->session = Sessions::load($this->config['session_driver']);
+    // $this->config = require_once(__DIR__.'/configuration.php');
 
-    $this->session->forget('access_token');
+    // $this->session = Sessions::load($this->config['session_driver']);
 
-    $this->credentials = $credentials;
+    // $this->session->forget('access_token');
+
+    // $this->credentials = $credentials;
 
 
-    AccessToken::session($this->session);
+    // AccessToken::session($this->session);
 
-    if( !AccessToken::hasToken() || AccessToken::isExpired() ) {
+    // if( !AccessToken::hasToken() || AccessToken::isExpired() ) {
 
-      $this->is_authed = false;
+    //   $this->is_authed = false;
 
-      //update token
-      if(AccessToken::hasToken()) {
+    //   //update token
+    //   if(AccessToken::hasToken()) {
 
-        unset($this->credentials['access_token']);
+    //     unset($this->credentials['access_token']);
 
-      }
+    //   }
 
-      $this->auth = new OAuth($this->credentials, $this->session);
-      $this->auth->refreshToken();
-      $this->is_authed = true;
+    //   $this->auth = new OAuth($this->credentials, $this->session);
+    //   $this->auth->refreshToken();
+    //   $this->is_authed = true;
 
-    } else {
+    // } else {
 
-      $this->is_authed = true;
+    //   $this->is_authed = true;
 
-    }
+    // }
 
 
   }
