@@ -53,6 +53,7 @@ class ManFox {
     // $this->config = require_once(__DIR__.'/configuration.php');
 
     $this->session = Sessions::load('php');
+    var_dump($this->session);
 
     // $this->session->forget('access_token');
 
