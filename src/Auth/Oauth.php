@@ -3,7 +3,7 @@
 namespace RichTestani\ManFox\Auth;
 use League\OAuth2\Client\Provider\GenericProvider;
 
-class Oauth {
+class OAuth {
 
     protected $redirect_uri = null;
 
