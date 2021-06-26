@@ -6,6 +6,11 @@
     "homepage": "https://github.com/richtestani/ManFox",
     "license": "unlicense",
     "minimum-stability": "dev",
+    "require": {
+        "php": ">=7",
+        "catfan/medoo": "^1.6",
+        "guzzlehttp/guzzle": "^7.2.0"
+    },
      "authors": [
         {
             "name": "Richard Testani",
