@@ -8,7 +8,7 @@ use RichTestani\ManFox\API;
 use GuzzleHttp\Client;
 // use RichTestani\ManFox\Auth\CreateClient;
 // use RichTestani\ManFox\ManFoxCache;
-// use RichTestani\ManFox\Tokens\AccessToken;
+use RichTestani\ManFox\Tokens\AccessToken;
 use RichTestani\ManFox\Drivers\{
   Sessions
 };
@@ -55,12 +55,12 @@ class ManFox {
     $this->session = Sessions::load('php');
     var_dump($this->session);
 
-    // $this->session->forget('access_token');
+    $this->session->forget('access_token');
 
-    // $this->credentials = $credentials;
+    $this->credentials = $credentials;
 
 
-    // AccessToken::session($this->session);
+    AccessToken::session($this->session);
 
     // if( !AccessToken::hasToken() || AccessToken::isExpired() ) {
 
