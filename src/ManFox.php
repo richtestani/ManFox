@@ -62,16 +62,16 @@ class ManFox {
 
     AccessToken::session($this->session);
 
-    // if( !AccessToken::hasToken() || AccessToken::isExpired() ) {
+    if( !AccessToken::hasToken() || AccessToken::isExpired() ) {
+      echo 'no access token';
+      $this->is_authed = false;
 
-    //   $this->is_authed = false;
+      //update token
+      if(AccessToken::hasToken()) {
 
-    //   //update token
-    //   if(AccessToken::hasToken()) {
+        unset($this->credentials['access_token']);
 
-    //     unset($this->credentials['access_token']);
-
-    //   }
+      }
 
     //   $this->auth = new OAuth($this->credentials, $this->session);
     //   $this->auth->refreshToken();
