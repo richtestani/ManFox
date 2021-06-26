@@ -9,9 +9,9 @@ use GuzzleHttp\Client;
 // use RichTestani\ManFox\Auth\CreateClient;
 // use RichTestani\ManFox\ManFoxCache;
 // use RichTestani\ManFox\Tokens\AccessToken;
-// use RichTestani\ManFox\Drivers\{
-//   Sessions
-// };
+use RichTestani\ManFox\Drivers\{
+  Sessions
+};
 
 /*
 The initializing file to work with this package.
@@ -52,7 +52,7 @@ class ManFox {
 
     // $this->config = require_once(__DIR__.'/configuration.php');
 
-    // $this->session = Sessions::load($this->config['session_driver']);
+    $this->session = Sessions::load('php');
 
     // $this->session->forget('access_token');
 
