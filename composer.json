@@ -10,7 +10,7 @@
         "php": ">=7",
         "catfan/medoo": "^1.6",
         "guzzlehttp/guzzle": "^7.2.0",
-        "league/oauth2-client": "3.x-dev"
+        "league/oauth2-client": "2.6.0"
     },
      "authors": [
         {
