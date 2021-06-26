@@ -46,7 +46,7 @@ class ManFox {
 
     $this->debug = $debug;
 
-    $this->api = new Api();
+    $this->api = new API();
 
     print_r($credentials);
 
