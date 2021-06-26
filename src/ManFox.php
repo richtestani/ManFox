@@ -2,11 +2,11 @@
 
 namespace RichTestani\ManFox;
 
-// use RichTestani\ManFox\Auth\OAuth;
+use RichTestani\ManFox\Auth\OAuth;
 // use RichTestani\ManFox\Nodes;
 use RichTestani\ManFox\API;
 use GuzzleHttp\Client;
-// use RichTestani\ManFox\Auth\CreateClient;
+use RichTestani\ManFox\Auth\CreateClient;
 // use RichTestani\ManFox\ManFoxCache;
 use RichTestani\ManFox\Tokens\AccessToken;
 use RichTestani\ManFox\Drivers\{
@@ -73,15 +73,15 @@ class ManFox {
 
       }
 
-    //   $this->auth = new OAuth($this->credentials, $this->session);
-    //   $this->auth->refreshToken();
-    //   $this->is_authed = true;
+      $this->auth = new OAuth($this->credentials, $this->session);
+      $this->auth->refreshToken();
+      $this->is_authed = true;
 
-    // } else {
+    } else {
 
-    //   $this->is_authed = true;
+      $this->is_authed = true;
 
-    // }
+    }
 
 
   }
