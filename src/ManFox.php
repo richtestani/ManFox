@@ -4,8 +4,8 @@ namespace RichTestani\ManFox;
 
 // use RichTestani\ManFox\Auth\OAuth;
 // use RichTestani\ManFox\Nodes;
-// use RichTestani\ManFox\Api;
-// use GuzzleHttp\Client;
+use RichTestani\ManFox\Api;
+use GuzzleHttp\Client;
 // use RichTestani\ManFox\Auth\CreateClient;
 // use RichTestani\ManFox\ManFoxCache;
 // use RichTestani\ManFox\Tokens\AccessToken;
