@@ -51,17 +51,20 @@ class ManFox {
     $this->session = Sessions::load('php');
 
     $this->credentials = $credentials;
-
+    print_r($_SESSION);
     echo $this->session->get('access_token');
     $this->credentials['access_token'] = $this->session->get('access_token');
    
     $this->setEnvorinment();
-
-    // if( AccessToken::isExpired() ) {
-    //   $this->refreshToken();
-    // } else {
-    //   $this->home();
-    // }
+    echo '<br>';
+    var_dump( AccessToken::isExpired() );
+    echo '<br>';
+    //a67240cb93bdb6bd80d22a726367b8421224b149
+    if( AccessToken::isExpired() ) {
+      $this->refreshToken();
+    } else {
+      $this->home();
+    }
 
     
 
@@ -110,6 +113,7 @@ class ManFox {
     $response = $this->api->response();
     print_r($response);
     $this->session->put('access_token', $response['access_token']);
+    $this->session->put('token_expiration', $response['expires_in']);
   }
 
 }
