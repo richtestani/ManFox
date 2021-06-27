@@ -17,12 +17,15 @@ class OAuth {
 
     protected $client_secret = null;
 
+    protected $refresh_token = null;
+
     public function __construct($credentials, $session = null)
     {
 
         $this->setClientId( $credentials['client_id'] );
         $this->setClientSecret( $credentials['client_secret'] );
         $this->setRedirectURI( $credentials['redirect_uri'] );
+        $this->setRefreshToken( $credentials['refresh_token'] );
 
     }
 
@@ -39,6 +42,11 @@ class OAuth {
     public function setRedirectURI($redirect_uri)
     {
         $this->redirect_uri = $redirect_uri;
+    }
+
+    public function setRefreshToken($refresh_token)
+    {
+        $this->refresh_token = $refresh_token;
     }
 
     public function auth()
@@ -72,7 +80,7 @@ class OAuth {
         
         $newAccessToken = $this->provider->getAccessToken('refresh_token', [
 
-                'refresh_token' => getenv('FOXYCART_REFRESH_TOKEN')
+                'refresh_token' => $this->refresh_token;
         ]);
 
         AccessToken::put($newAccessToken->getToken());
