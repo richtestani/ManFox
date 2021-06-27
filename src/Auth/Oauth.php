@@ -124,16 +124,6 @@ class OAuth {
          $this->state = 'manfox_'.strtotime('now');
     }
 
-    private function setRedirectUri()
-    {
-        if(is_null($this->redirect_uri)) {
-
-            $this->redirect_uri = $_SERVER['SERVER_NAME'] . '/oath';
-
-        }
-        
-    }
-
     private function buildAuthUrl()
     {   
         $this->setState();
