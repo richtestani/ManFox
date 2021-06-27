@@ -80,7 +80,7 @@ class OAuth {
         
         $newAccessToken = $this->provider->getAccessToken('refresh_token', [
 
-                'refresh_token' => $this->refresh_token;
+                'refresh_token' => $this->refresh_token
         ]);
 
         AccessToken::put($newAccessToken->getToken());
