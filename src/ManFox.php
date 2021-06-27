@@ -58,7 +58,7 @@ class ManFox {
   }
 
 
-  public function home() 
+  public function __call($name) 
   {
     $factory = new NodeFactory();
 
@@ -68,6 +68,10 @@ class ManFox {
 
   public function setEnvorinment()
   {
+
+      $this->session->put('client_id', $this->credentials['client_id']);
+      $this->session->put('secret_id', $this->credentials['secret_id']);
+      $this->session->put('refresh_token', $this->credentials['refresh_token']);
 
   }
 
