@@ -17,14 +17,12 @@ class OAuth {
 
     protected $client_secret = null;
 
-    public function __construct($redirect_uri = '')
+    public function __construct($credentials, $session = null)
     {
 
-        if(!empty($redirect_uri)) {
-
-            $this->redirect_uri = $redirect_uri;
-            
-        }
+        $this->setClientId( $credentials['client_id'] );
+        $this->setClientSecret( $credentials['client_secret'] );
+        $this->setRedirectURI( $credentials['redirect_uri'] );
 
     }
 
@@ -36,6 +34,11 @@ class OAuth {
     public function setClientSecret($secret)
     {
         $this->client_secret = $secret;
+    }
+
+    public function setRedirectURI($redirect_uri)
+    {
+        $this->redirect_uri = $redirect_uri;
     }
 
     public function auth()
@@ -51,7 +54,7 @@ class OAuth {
         $this->provider = new GenericProvider([
             'clientId'                => $this->client_id,    // The client ID assigned to you by the provider
             'clientSecret'            => $this->client_secret,   // The client password assigned to you by the provider
-            'redirectUri'             => 'https://manfoxbuild.app/oauth',
+            'redirectUri'             => $this->redirect_uri,
             'urlAuthorize'            => $this->auth_uri,
             'urlAccessToken'          => 'https://api.foxycart.com/token',
             'urlResourceOwnerDetails' => 'https://api.foxycart.com',
