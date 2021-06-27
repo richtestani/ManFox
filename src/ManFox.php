@@ -7,7 +7,7 @@ use RichTestani\ManFox\Auth\OAuth;
 use RichTestani\ManFox\API;
 use GuzzleHttp\Client;
 use RichTestani\ManFox\Auth\CreateClient;
-// use RichTestani\ManFox\ManFoxCache;
+use RichTestani\ManFox\ManFoxCache;
 use RichTestani\ManFox\Tokens\AccessToken;
 use RichTestani\ManFox\Drivers\{
   Sessions
@@ -48,40 +48,38 @@ class ManFox {
 
     $this->api = new API();
 
-    print_r($credentials);
-
-    // $this->config = require_once(__DIR__.'/configuration.php');
-
     $this->session = Sessions::load('php');
-    var_dump($this->session);
-
-    $this->session->forget('access_token');
 
     $this->credentials = $credentials;
 
-
-    AccessToken::session($this->session);
-
-    if( !AccessToken::hasToken() || AccessToken::isExpired() ) {
-      echo 'no access token';
-      $this->is_authed = false;
-
-      //update token
-      if(AccessToken::hasToken()) {
-
-        unset($this->credentials['access_token']);
-
-      }
-
-      $this->auth = new OAuth($this->credentials, $this->session);
-      $this->auth->refreshToken();
-      $this->is_authed = true;
-
-    } else {
-
-      $this->is_authed = true;
-
+    if(empty( $this->credentials['store_id'] )) {
+      echo 'no store set, please fetch store';
     }
+    
+    // AccessToken::session($this->session);
+
+    // if( !AccessToken::hasToken() || AccessToken::isExpired() ) {
+    //   echo 'no access token';
+    //   $this->is_authed = false;
+
+    //   //update token
+    //   if(AccessToken::hasToken()) {
+
+    //     unset($this->credentials['access_token']);
+
+    //   }
+
+    //   $this->auth = new OAuth($this->credentials, $this->session);
+    //   $refreshToken = $this->auth->refreshToken();
+      
+    //   $this->is_authed = true;
+
+    // } else {
+
+    //   $this->is_authed = true;
+
+    // }
+    
 
 
   }
