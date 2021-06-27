@@ -52,13 +52,32 @@ class ManFox {
 
     $this->credentials = $credentials;
 
+    echo $this->session->get('access_token');
+    $this->credentials['access_token'] = $this->session->get('access_token');
+   
+    $this->setEnvorinment();
+
+    // if( AccessToken::isExpired() ) {
+    //   $this->refreshToken();
+    // } else {
+    //   $this->home();
+    // }
+
+    
+
+  }
+
+  public function home()
+  {
+    echo 'home';
+    $this->api->setBearer($this->credentials['access_token']);
+    $this->api->debug(true);
     $home = $this->api->get('https://api.foxycart.com/');
-    var_dump($home);
 
   }
 
 
-  public function __call($name) 
+  public function __call($name, $options) 
   {
     $factory = new NodeFactory();
 
@@ -69,10 +88,28 @@ class ManFox {
   public function setEnvorinment()
   {
 
+      AccessToken::session($this->session);
       $this->session->put('client_id', $this->credentials['client_id']);
-      $this->session->put('secret_id', $this->credentials['secret_id']);
+      $this->session->put('client_secret', $this->credentials['client_secret']);
       $this->session->put('refresh_token', $this->credentials['refresh_token']);
+      $this->session->put('access_token', $this->credentials['access_token']);
 
+  }
+
+  public function refreshToken()
+  {
+
+    echo 'getting new token';
+    $this->api->debug(true);
+    $this->api->post('https://api.foxycart.com/token', [
+      'grant_type' => 'refresh_token',
+      'refresh_token' => $this->credentials['refresh_token'],
+      'client_id' => $this->credentials['client_id'],
+      'client_secret' => $this->credentials['client_secret']
+    ]);
+    $response = $this->api->response();
+    print_r($response);
+    $this->session->put('access_token', $response['access_token']);
   }
 
 }

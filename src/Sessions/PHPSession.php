@@ -12,9 +12,11 @@ use RichTestani\ManFox\Contracts\iSessions;
 class PHPSession implements iSessions
 {
 
+  public $prefix = 'maxfox_';
+
   public function put($name, $value)
   {
-    $_SESSION[$name] = $value;
+    $_SESSION[$this->prefix . $name] = $value;
   }
 
   public function get($name)
@@ -28,12 +30,12 @@ class PHPSession implements iSessions
 
   public function has($name)
   {
-    return (array_key_exists($name, $_SESSION)) ? true : false;
+    return (array_key_exists($this->prefix . $name, $_SESSION)) ? true : false;
   }
 
   public function forget($name)
   {
-    unset($_SESSION[$name]);
+    unset($_SESSION[$this->prefox . $name]);
   }
 
 }
