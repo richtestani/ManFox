@@ -112,8 +112,9 @@ class ManFox {
     ]);
     $response = $this->api->response();
     print_r($response);
+    $expiration = Carbon::now()->addMinutes($response['expires_in'])
     $this->session->put('access_token', $response['access_token']);
-    $this->session->put('token_expiration', $response['expires_in']);
+    $this->session->put('token_expiration', $expiration);
   }
 
 }
