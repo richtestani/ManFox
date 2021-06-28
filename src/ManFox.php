@@ -115,10 +115,15 @@ class ManFox {
       'client_id' => $this->credentials['client_id'],
       'client_secret' => $this->credentials['client_secret']
     ]);
+    
+    //get the response
     $response = $this->api->response();
-    $expiration = Carbon::now()->addMinutes($response['expires_in'])
+    $expiration = Carbon::now()->addMinutes($response['expires_in']);
+
+    //store the new token and expiration
     $this->session->put('access_token', $response['access_token']);
     $this->session->put('token_expiration', $expiration);
+
   }
 
 }

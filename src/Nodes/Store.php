@@ -48,7 +48,7 @@ A single representation of a store
      $this->api = $api;
      $this->session = $manfox->getSession();
 
-     $this->store_id = $this->session->get('store_id');
+     //$this->store_id = $this->session->get('store_id');
 
 
      // if( $this->cache->has('store') ) {
