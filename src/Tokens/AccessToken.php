@@ -50,7 +50,7 @@ class AccessToken
   static public function isExpired()
   {
 
-    $origTime = self::$session->get('token_expiration')->toDateTimeString()
+    $origTime = self::$session->get('token_expiration')->toDateTimeString();
 
     if($origTime < Carbon::now()->toDateTimeString()) {
       return true;
