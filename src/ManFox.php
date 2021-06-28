@@ -52,6 +52,9 @@ class ManFox {
     $this->session = Sessions::load('php');
 
     $this->credentials = $credentials;
+    if($credentials['store_id']) 
+      $this->credentials['store_id'] = $credentials['store_id'];
+    }
     $this->credentials['access_token'] = $this->session->get('access_token');
    
     $this->setEnvorinment();
@@ -82,7 +85,9 @@ class ManFox {
     $this->api->setBearer($this->credentials['access_token']);
     $this->api->debug(true);
     $this->api->get($stores);
+    echo '<pre>';
     print_r($this->api->response());
+    echo '</pre>';
 
   }
 
@@ -103,6 +108,7 @@ class ManFox {
       $this->session->put('client_secret', $this->credentials['client_secret']);
       $this->session->put('refresh_token', $this->credentials['refresh_token']);
       $this->session->put('access_token', $this->credentials['access_token']);
+      $this->session->put('store_id', $this->credentials['store_id']);
 
   }
 
