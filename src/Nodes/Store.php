@@ -105,4 +105,5 @@ A single representation of a store
    {
      return $this->links($child);
    }
+   
  }

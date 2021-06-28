@@ -15,6 +15,10 @@ A single representation of a store
  use RichTestani\ManFox\ManFoxCache;
  use RichTestani\ManFox\Models\Store as ManFoxStore;
  use RichTestani\ManFox\Responses\CustomersResponse;
+ use RichTestani\ManFox\Drivers\{
+  Sessions
+};
+ 
 
  class Customers extends Nodes implements iNode
  {
@@ -49,7 +53,8 @@ A single representation of a store
    {
 
      $this->api = $api;
-     $this->session = $manfox->getSession();
+     //$this->session = $manfox->getSession();
+     $this->session = Sessions::load('php');
      $this->store_id = $this->session->get('store_id');
      $this->api->setHeader('Authorization', 'Bearer '.$_SESSION['manfox_access_token']);
      $this->base_url = '/customers/'.$this->store_id;

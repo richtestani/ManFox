@@ -63,6 +63,10 @@ class ManFox {
     if( AccessToken::isExpired() ) {
       $this->refreshToken();
     } else {
+      if($this->credentials['store_id']) {
+        $customers = $this->store('customers', $this->api, $this);
+        print_r($customers);
+      }
       $this->home();
     }
 
