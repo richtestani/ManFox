@@ -12,6 +12,9 @@ use RichTestani\ManFox\Crud\ {
 use RichTestani\ManFox\ManFoxCache;
 use RichTestani\ManFox\Contracts\iResponse;
 use RichTestani\ManFox\Responses;
+use RichTestani\ManFox\Drivers\{
+  Sessions
+};
 
 abstract class Nodes
 {
@@ -29,6 +32,8 @@ abstract class Nodes
   protected $form_params;
 
   protected $uri;
+
+  protected $session;
 
   public function setLinks($links)
   {
