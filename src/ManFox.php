@@ -52,7 +52,8 @@ class ManFox {
     $this->session = Sessions::load('php');
 
     $this->credentials = $credentials;
-    if($credentials['store_id']) 
+
+    if($credentials['store_id']) {
       $this->credentials['store_id'] = $credentials['store_id'];
     }
     $this->credentials['access_token'] = $this->session->get('access_token');
