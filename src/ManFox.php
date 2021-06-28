@@ -51,15 +51,10 @@ class ManFox {
     $this->session = Sessions::load('php');
 
     $this->credentials = $credentials;
-    print_r($_SESSION);
-    echo $this->session->get('access_token');
     $this->credentials['access_token'] = $this->session->get('access_token');
    
     $this->setEnvorinment();
-    echo '<br>';
-    var_dump( AccessToken::isExpired() );
-    echo '<br>';
-    //a67240cb93bdb6bd80d22a726367b8421224b149
+
     if( AccessToken::isExpired() ) {
       $this->refreshToken();
     } else {
@@ -72,10 +67,21 @@ class ManFox {
 
   public function home()
   {
-    echo 'home';
+
     $this->api->setBearer($this->credentials['access_token']);
     $this->api->debug(true);
     $home = $this->api->get('https://api.foxycart.com/');
+    $this->accountSetup($this->api->response());
+  }
+
+  public function accountSetup($home)
+  {
+
+    $stores = $home['_links']['fx:stores']['href'];
+    $this->api->setBearer($this->credentials['access_token']);
+    $this->api->debug(true);
+    $this->api->post($stores);
+    print_r($this->api->response());
 
   }
 
@@ -102,7 +108,6 @@ class ManFox {
   public function refreshToken()
   {
 
-    echo 'getting new token';
     $this->api->debug(true);
     $this->api->post('https://api.foxycart.com/token', [
       'grant_type' => 'refresh_token',
@@ -111,7 +116,6 @@ class ManFox {
       'client_secret' => $this->credentials['client_secret']
     ]);
     $response = $this->api->response();
-    print_r($response);
     $expiration = Carbon::now()->addMinutes($response['expires_in'])
     $this->session->put('access_token', $response['access_token']);
     $this->session->put('token_expiration', $expiration);
