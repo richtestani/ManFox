@@ -15,9 +15,6 @@ A single representation of a store
  use RichTestani\ManFox\ManFoxCache;
  use RichTestani\ManFox\Models\Store as ManFoxStore;
  use RichTestani\ManFox\Responses\CustomersResponse;
- use RichTestani\ManFox\Drivers\{
-  Sessions
-};
  
 
  class Customers extends Nodes implements iNode

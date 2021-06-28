@@ -46,7 +46,7 @@ A single representation of a store
    {
 
      $this->api = $api;
-     $this->session = $manfox->getSession();
+     $this->session = Sessions::load('php');
 
      //$this->store_id = $this->session->get('store_id');
 
@@ -105,5 +105,5 @@ A single representation of a store
    {
      return $this->links($child);
    }
-   
+
  }
