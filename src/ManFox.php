@@ -81,7 +81,7 @@ class ManFox {
     $stores = $home['_links']['fx:stores']['href'];
     $this->api->setBearer($this->credentials['access_token']);
     $this->api->debug(true);
-    $this->api->post($stores);
+    $this->api->get($stores);
     print_r($this->api->response());
 
   }

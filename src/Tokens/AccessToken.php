@@ -25,7 +25,7 @@ class AccessToken
   {
     self::$expires_at = Carbon::now()->addHours(2);
     self::$session->put('token_expiration', self::$expires_at);
-    self::$session->put('manfox_access_token', $token);
+    self::$session->put('access_token', $token);
 
     self::$token = $token;
   }
@@ -33,14 +33,14 @@ class AccessToken
   static public function get()
   {
     if(self::hasToken()) {
-      self::$token = self::$session->get('manfox_access_token');
+      self::$token = self::$session->get('access_token');
     }
     return self::$token;
   }
 
   static public function hasToken()
   {
-    if(self::$session->has('manfox_access_token')) {
+    if(self::$session->has('access_token')) {
       return true;
     } else {
       return false;
@@ -50,7 +50,9 @@ class AccessToken
   static public function isExpired()
   {
 
-    if(self::$session->get('token_expiration') < Carbon::now()) {
+    $origTime = self::$session->get('token_expiration')->toDateTimeString()
+
+    if($origTime < Carbon::now()->toDateTimeString()) {
       return true;
     } else {
       return false;
