@@ -51,7 +51,7 @@ abstract class Nodes
     return $response;
   }
 
-  public function get()
+  public function get($endpoint, $options)
   {
     $responseClass = $this->resolveResponseClass(get_called_class());
     $responseClass = "RichTestani\\ManFox\\Responses\\".$responseClass;

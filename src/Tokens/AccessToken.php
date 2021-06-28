@@ -51,8 +51,8 @@ class AccessToken
   {
 
     $origTime = self::$session->get('token_expiration');
-
-    if($origTime->toDateTimeString() < Carbon::now()->toDateTimeString()) {
+    
+    if(is_null($origTime) || $origTime->toDateTimeString() < Carbon::now()->toDateTimeString()) {
       return true;
     } else {
       return false;
