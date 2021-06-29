@@ -66,8 +66,10 @@ class ManFox {
       if($this->credentials['store_id']) {
         $customers = $this->store('customers', $this->api, $this);
         print_r($customers);
+      } else {
+        $this->home();
+        $this->accountSetup($this->api->response());
       }
-      $this->home();
     }
 
     
@@ -79,8 +81,8 @@ class ManFox {
 
     $this->api->setBearer($this->credentials['access_token']);
     $this->api->debug(true);
-    $home = $this->api->get('https://api.foxycart.com/');
-    $this->accountSetup($this->api->response());
+    $this->api->get('https://api.foxycart.com/');
+    
   }
 
   public function accountSetup($home)

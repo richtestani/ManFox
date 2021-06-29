@@ -14,6 +14,9 @@ A single representation of a store
  use RichTestani\ManFox\Nodes;
  use RichTestani\ManFox\ManFoxCache;
  use RichTestani\ManFox\Models\Store as ManFoxStore;
+ use RichTestani\ManFox\Drivers\{
+  Sessions
+};
 
  class Store extends Nodes implements iNode
  {
