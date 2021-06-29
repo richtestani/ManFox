@@ -65,7 +65,7 @@ class ManFox {
     } else {
       if($this->credentials['store_id']) {
         $customers = $this->store('customers', $this->api, $this);
-        print_r($customers);
+        print_r($customers->response());
       } else {
         $this->home();
         $this->accountSetup($this->api->response());
@@ -92,10 +92,7 @@ class ManFox {
     $this->api->setBearer($this->credentials['access_token']);
     $this->api->debug(true);
     $this->api->get($stores);
-    echo '<pre>';
-    print_r($this->api->response());
-    echo '</pre>';
-
+ 
   }
 
 
